@@ -147,7 +147,7 @@ select option{background:#1a2a4a;}
 </div>
 
 <script>
-var WEBHOOK_URL = '';
+var WEBHOOK_URL = localStorage.getItem('sr_texans_webhook') || '';
 var qrGenerated = false;
 
 function tick(){
@@ -188,6 +188,7 @@ function saveWebhook(){
   var url = document.getElementById('webhook-url').value.trim();
   if(!url){ document.getElementById('webhook-status').textContent = 'Please enter a URL.'; return; }
   WEBHOOK_URL = url;
+  localStorage.setItem('sr_texans_webhook', url);
   document.getElementById('webhook-status').textContent = '✅ Saved! Check-ins will now log to your Google Sheet.';
 }
 
